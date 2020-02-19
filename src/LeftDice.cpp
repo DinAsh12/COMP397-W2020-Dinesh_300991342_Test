@@ -10,19 +10,19 @@
 LeftDice::LeftDice()
 {
     TheTextureManager::Instance()->load("../Assets/textures/1.png",
-        "Side1", TheGame::Instance()->getRenderer());
+        "LSide1", TheGame::Instance()->getRenderer());
     TheTextureManager::Instance()->load("../Assets/textures/2.png",
-        "Side2", TheGame::Instance()->getRenderer());
+        "LSide2", TheGame::Instance()->getRenderer());
     TheTextureManager::Instance()->load("../Assets/textures/3.png",
-        "Side3", TheGame::Instance()->getRenderer());
+        "LSide3", TheGame::Instance()->getRenderer());
     TheTextureManager::Instance()->load("../Assets/textures/4.png",
-        "Side4", TheGame::Instance()->getRenderer());
+        "LSide4", TheGame::Instance()->getRenderer());
     TheTextureManager::Instance()->load("../Assets/textures/5.png",
-        "Side5", TheGame::Instance()->getRenderer());
+        "LSide5", TheGame::Instance()->getRenderer());
     TheTextureManager::Instance()->load("../Assets/textures/6.png",
-        "Side6", TheGame::Instance()->getRenderer());
+        "LSide6", TheGame::Instance()->getRenderer());
 
-    glm::vec2 size = TheTextureManager::Instance()->getTextureSize("Side1");
+    glm::vec2 size = TheTextureManager::Instance()->getTextureSize("LSide1");
     setWidth(size.x);
     setHeight(size.y);
     setPosition(glm::vec2(155, 155));
@@ -34,6 +34,20 @@ LeftDice::~LeftDice()
    
 }
 
+void LeftDice::roll()
+{
+    // set the amount of spins, spin it and set the number to the wheel slot
+    int rolls = (10 + rand() % 50);
+
+    for (int i = 0; i < rolls; i++) {
+
+        m_pLDice++;
+        if (m_pLDice > 6)
+        {
+            m_pLDice = 0;
+        }
+    }
+}
 void LeftDice::draw()
 {
     int xComponent = getPosition().x;
@@ -41,7 +55,7 @@ void LeftDice::draw()
 
 
 
-    TheTextureManager::Instance()->draw("Side1", xComponent, yComponent,
+    TheTextureManager::Instance()->draw("LSide1", xComponent, yComponent,
         TheGame::Instance()->getRenderer(), 0, 255, true);
 }
 
@@ -51,4 +65,8 @@ void LeftDice::update()
 
 void LeftDice::clean()
 {
+}
+int LeftDice::getLeftDice()
+{
+    return m_pLDice;
 }

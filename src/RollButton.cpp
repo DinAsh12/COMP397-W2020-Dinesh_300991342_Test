@@ -28,7 +28,7 @@ bool RollButton::ButtonClick()
 		if (!m_isClicked)
 		{
 			TheSoundManager::Instance()->load("../Assets/audio/mouseclick.wav", "yay", SOUND_SFX);
-			std::cout << "Spin Button Clicked!" << std::endl;
+			std::cout << "Roll Button Clicked!" << std::endl;
 
 			m_isClicked = true;
 		}

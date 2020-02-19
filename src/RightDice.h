@@ -7,8 +7,8 @@
 
 #pragma once
 #include"DisplayObject.h"
-#ifndef __DICE__
-#define __DICE__
+#ifndef __RDICE__
+#define __RDICE__
 class RightDice : public DisplayObject
 {
 public:
@@ -17,7 +17,12 @@ public:
 
     void draw()override;
     void update()override;
+    void roll();
     void clean()override;
+    int getRightDice();
+
+private:
+    int m_pRDice_;
 };
-#endif /* defined (__DICE__)*/
+#endif /* defined (__RDICE__)*/
 

@@ -33,6 +33,20 @@ RightDice::~RightDice()
 {
 
 }
+void RightDice::roll()
+{
+    // set the amount of spins, spin it and set the number to the wheel slot
+    int rolls = (10 + rand() % 50);
+
+    for (int i = 0; i < rolls; i++) {
+
+        m_pRDice_++;
+        if (m_pRDice_ > 6)
+        {
+            m_pRDice_ = 0;
+        }
+    }
+}
 
 void RightDice::draw()
 {
@@ -41,7 +55,7 @@ void RightDice::draw()
 
 
 
-    TheTextureManager::Instance()->draw("Side1", xComponent, yComponent,
+    TheTextureManager::Instance()->draw("RSide1", xComponent, yComponent,
         TheGame::Instance()->getRenderer(), 0, 255, true);
 }
 
@@ -51,4 +65,9 @@ void RightDice::update()
 
 void RightDice::clean()
 {
+}
+
+int RightDice::getRightDice()
+{
+    return m_pRDice_;
 }
